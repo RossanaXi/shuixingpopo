@@ -13,15 +13,6 @@ body{background:var(--cream);color:var(--ink);font-family:var(--fb);line-height:
 .logo small{font-family:var(--fb);font-size:10px;letter-spacing:.22em;color:var(--ink-m);text-transform:uppercase;display:block;margin-top:1px}
 .nav-r{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;align-items:center}
 .nav-r::-webkit-scrollbar{display:none}
-.nav-search{position:relative;display:flex;align-items:center}
-.search-btn{background:none;border:none;cursor:pointer;font-size:18px;padding:4px 8px;color:var(--ink-m);line-height:1;border-radius:8px;transition:background .15s}
-.search-btn:hover{background:var(--acc-p)}
-.search-popup{position:absolute;right:0;top:38px;background:white;border:1.5px solid var(--acc-l);border-radius:24px;padding:6px 16px 6px 16px;display:none;align-items:center;gap:8px;box-shadow:0 8px 24px var(--shd);white-space:nowrap;z-index:200;min-width:260px}
-.search-popup.open{display:flex}
-.search-popup input{border:none;outline:none;font-family:var(--fc);font-size:14px;color:var(--ink);background:transparent;width:200px}
-.search-popup button{background:none;border:none;cursor:pointer;color:var(--ink-f);font-size:18px;line-height:1;padding:0}
-.search-popup button:hover{color:var(--acc)}
-.search-result-tip{font-family:var(--fc);font-size:12px;color:var(--ink-m);margin-top:10px;min-height:18px}
 .nc{padding:5px 10px;border-radius:16px;font-family:var(--fc);font-size:11px;color:var(--ink-m);cursor:pointer;border:1px solid transparent;transition:all .18s;text-decoration:none;white-space:nowrap}
 .nc:hover,.nc.on{background:var(--hp);color:var(--hc);border-color:var(--hb)}
 
@@ -41,7 +32,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--fb);line-height:
 .hero h1{font-family:var(--ft);font-size:46px;line-height:1.3;margin-bottom:14px;color:var(--ink)}
 .hero h1 em{font-style:normal;color:var(--acc)}
 .hero-sub{font-family:var(--fb);font-size:14px;line-height:2;color:var(--ink-l);max-width:500px;margin-bottom:32px}
-.stats{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:0}
+.stats{display:flex;flex-wrap:wrap}
 .stat{padding:12px 24px 12px 0;border-right:1px solid var(--bdr);margin-right:24px}
 .stat:last-child{border-right:none;margin-right:0}
 .stat-n{font-family:var(--ft);font-size:28px}
@@ -113,22 +104,6 @@ footer p{font-family:var(--fb);font-size:12px;color:var(--ink-f);line-height:2}
 <body>
 <nav class="nav">
   <a class="logo" onclick="showHome('全部');return false" href="#">水星婆婆<small>Shuixing Popo · Since 2014</small></a>
-  <div style="display:flex;align-items:center;gap:4px">
-  <div class="nav-search" style="position:relative;display:flex;align-items:center">
-    <button id="searchBtn" onclick="toggleSearch()" style="background:none;border:none;cursor:pointer;font-size:18px;padding:4px 8px;color:var(--ink-m);border-radius:8px;transition:background .15s;line-height:1" onmouseover="this.style.background='var(--acc-p)'" onmouseout="this.style.background='none'">🔍</button>
-    <div id="searchPopup" style="display:none;position:absolute;right:0;top:38px;background:white;border:1.5px solid var(--acc-l);border-radius:24px;padding:6px 12px;align-items:center;gap:8px;box-shadow:0 8px 24px var(--shd);white-space:nowrap;z-index:200;min-width:240px">
-      <input id="searchInput" type="text" placeholder="搜索配方、食材..." oninput="doSearch(this.value)" style="border:none;outline:none;font-family:var(--fc);font-size:14px;color:var(--ink);background:transparent;width:180px">
-      <button onclick="clearSearch()" style="background:none;border:none;cursor:pointer;color:var(--ink-f);font-size:18px;line-height:1;padding:0">×</button>
-    </div>
-  </div>
-  <div style="display:flex;align-items:center;gap:4px">
-  <div class="nav-search" style="position:relative;display:flex;align-items:center">
-    <button id="searchBtn" onclick="toggleSearch()" style="background:none;border:none;cursor:pointer;font-size:18px;padding:4px 8px;color:var(--ink-m);border-radius:8px;transition:background .15s;line-height:1" onmouseover="this.style.background='var(--acc-p)'" onmouseout="this.style.background='none'">🔍</button>
-    <div id="searchPopup" style="display:none;position:absolute;right:0;top:38px;background:white;border:1.5px solid var(--acc-l);border-radius:24px;padding:6px 12px;align-items:center;gap:8px;box-shadow:0 8px 24px var(--shd);white-space:nowrap;z-index:200;min-width:240px">
-      <input id="searchInput" type="text" placeholder="搜索配方、食材..." oninput="doSearch(this.value)" style="border:none;outline:none;font-family:var(--fc);font-size:14px;color:var(--ink);background:transparent;width:180px">
-      <button onclick="clearSearch()" style="background:none;border:none;cursor:pointer;color:var(--ink-f);font-size:18px;line-height:1;padding:0">×</button>
-    </div>
-  </div>
   <div class="nav-r"><a class="nc" style="--hc:#8b6914;--hp:#fdf6e3;--hb:#e8d49a" onclick="showHome('面包');return false" href="#">🍞 面包</a>
 <a class="nc" style="--hc:#9b4060;--hp:#fdf0f4;--hb:#f0b8cc" onclick="showHome('蛋糕');return false" href="#">🎂 蛋糕</a>
 <a class="nc" style="--hc:#5a7a30;--hp:#f0f5e8;--hb:#c0d898" onclick="showHome('饼干');return false" href="#">🍪 饼干</a>
@@ -136,144 +111,48 @@ footer p{font-family:var(--fb);font-size:12px;color:var(--ink-f);line-height:2}
 <a class="nc" style="--hc:#8b6010;--hp:#fdf4e8;--hb:#f0d090" onclick="showHome('甜品');return false" href="#">🍮 甜品</a>
 <a class="nc" style="--hc:#4a5878;--hp:#eef0f8;--hb:#b8c4e0" onclick="showHome('水星阅读');return false" href="#">📚 水星阅读</a>
 <a class="nc" style="--hc:#5a4878;--hp:#f4f0f8;--hb:#c8b8e0" onclick="showHome('随笔');return false" href="#">✍️ 随笔</a>
+</div>
 </nav>
 
 <div class="home-page" id="homePage">
 
-  
+  <!-- 搜索框 -->
+  <div class="search-wrap">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="搜索配方、食材、关键词..." oninput="doSearch(this.value)">
+      <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+    </div>
+    <div class="search-result-tip" id="searchTip"></div>
+  </div>
+
+  <div class="hero">
+    <div>
+      <div class="eye">烘焙 · 生活 · 水彩</div>
+      <h1>用面粉和<em>黄油</em><br>丈量生活的温度</h1>
+      <p class="hero-sub">十年烘焙记录，每一篇都是厨房里的小小故事。</p>
+      <div class="stats"><div class="stat"><div class="stat-n" style="color:#8b6914">62</div><div class="stat-l">🍞 面包</div></div>
+<div class="stat"><div class="stat-n" style="color:#9b4060">93</div><div class="stat-l">🎂 蛋糕</div></div>
+<div class="stat"><div class="stat-n" style="color:#5a7a30">16</div><div class="stat-l">🍪 饼干</div></div>
+<div class="stat"><div class="stat-n" style="color:#6b3520">27</div><div class="stat-l">🍫 巧克力</div></div>
+<div class="stat"><div class="stat-n" style="color:#8b6010">49</div><div class="stat-l">🍮 甜品</div></div>
+<div class="stat"><div class="stat-n" style="color:#4a5878">26</div><div class="stat-l">📚 水星阅读</div></div>
+<div class="stat"><div class="stat-n" style="color:#5a4878">48</div><div class="stat-l">✍️ 随笔</div></div>
+</div>
     </div>
     <div class="hero-illo">
-  <svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px">
-    <!-- 背景圆 -->
-    <circle cx="150" cy="160" r="140" fill="#fdf6f0" opacity=".7"/>
-    <!-- 窗户左 -->
-    <rect x="28" y="48" width="44" height="52" rx="4" fill="#f8e8c0" stroke="#c4a870" stroke-width="1.5"/>
-    <rect x="28" y="48" width="44" height="26" rx="4" fill="#d4e8f8" stroke="#c4a870" stroke-width="1"/>
-    <line x1="50" y1="48" x2="50" y2="100" stroke="#c4a870" stroke-width="1"/>
-    <line x1="28" y1="74" x2="72" y2="74" stroke="#c4a870" stroke-width="1"/>
-    <!-- 窗户右 -->
-    <rect x="228" y="48" width="44" height="52" rx="4" fill="#f8e8c0" stroke="#c4a870" stroke-width="1.5"/>
-    <rect x="228" y="48" width="44" height="26" rx="4" fill="#d4e8f8" stroke="#c4a870" stroke-width="1"/>
-    <line x1="250" y1="48" x2="250" y2="100" stroke="#c4a870" stroke-width="1"/>
-    <line x1="228" y1="74" x2="272" y2="74" stroke="#c4a870" stroke-width="1"/>
-    <!-- 架子 -->
-    <rect x="18" y="110" width="80" height="6" rx="3" fill="#8b6040"/>
-    <rect x="22" y="116" width="4" height="30" rx="2" fill="#8b6040"/>
-    <rect x="90" y="116" width="4" height="30" rx="2" fill="#8b6040"/>
-    <!-- 架子上的东西 -->
-    <ellipse cx="42" cy="110" rx="14" ry="14" fill="#f0c8a0" stroke="#d4a070" stroke-width="1"/>
-    <ellipse cx="42" cy="108" rx="12" ry="10" fill="#f5d0b0"/>
-    <rect x="58" y="98" width="12" height="18" rx="3" fill="#e8e0f0" stroke="#c0b0d0" stroke-width="1"/>
-    <rect x="74" y="100" width="10" height="16" rx="3" fill="#f0e8d0" stroke="#d0c0a0" stroke-width="1"/>
-    <!-- 挂杯子的横杆 -->
-    <rect x="18" y="152" width="78" height="4" rx="2" fill="#8b6040"/>
-    <line x1="30" y1="156" x2="30" y2="170" stroke="#8b6040" stroke-width="1.5"/>
-    <line x1="46" y1="156" x2="46" y2="170" stroke="#8b6040" stroke-width="1.5"/>
-    <line x1="62" y1="156" x2="62" y2="170" stroke="#8b6040" stroke-width="1.5"/>
-    <!-- 杯子 -->
-    <path d="M26 170 Q30 180 34 170Z" fill="#e8c8a0" stroke="#c4a070" stroke-width="1"/>
-    <path d="M42 170 Q46 182 50 170Z" fill="#d4c8e8" stroke="#b0a0d0" stroke-width="1"/>
-    <path d="M58 170 Q62 180 66 170Z" fill="#c8e0d0" stroke="#90b8a0" stroke-width="1"/>
-    <!-- 桌子 -->
-    <rect x="28" y="218" width="110" height="8" rx="3" fill="#c4a070"/>
-    <rect x="34" y="226" width="8" height="40" rx="3" fill="#b89060"/>
-    <rect x="124" y="226" width="8" height="40" rx="3" fill="#b89060"/>
-    <!-- 桌上：面包机 -->
-    <rect x="34" y="196" width="36" height="26" rx="4" fill="#8c8888" stroke="#6a6868" stroke-width="1"/>
-    <rect x="48" y="192" width="8" height="8" rx="2" fill="#6a6868"/>
-    <rect x="50" y="192" width="4" height="12" rx="1" fill="#5a5858"/>
-    <!-- 桌上：调料瓶 -->
-    <rect x="76" y="200" width="10" height="20" rx="5" fill="#f0f0e8" stroke="#c0c0a8" stroke-width="1"/>
-    <rect x="80" y="196" width="2" height="6" rx="1" fill="#a0a090"/>
-    <rect x="90" y="202" width="9" height="18" rx="4" fill="#f0f0e8" stroke="#c0c0a8" stroke-width="1"/>
-    <rect x="94" y="198" width="2" height="6" rx="1" fill="#a0a090"/>
-    <rect x="103" y="204" width="9" height="16" rx="4" fill="#f0f0e8" stroke="#c0c0a8" stroke-width="1"/>
-    <!-- 小姑娘身体 -->
-    <!-- 围裙 -->
-    <path d="M108 185 Q150 175 192 185 L196 240 Q150 250 104 240Z" fill="#c84898"/>
-    <!-- 上衣 -->
-    <path d="M115 160 Q150 152 185 160 L192 195 Q150 200 108 195Z" fill="#3a1848"/>
-    <!-- 领子 -->
-    <ellipse cx="150" cy="160" rx="18" ry="8" fill="white"/>
-    <!-- 围裙带 -->
-    <path d="M126 175 L124 218" stroke="#e060a8" stroke-width="3" stroke-linecap="round"/>
-    <path d="M174 175 L176 218" stroke="#e060a8" stroke-width="3" stroke-linecap="round"/>
-    <rect x="134" y="185" width="32" height="22" rx="4" fill="#e060a8" opacity=".6"/>
-    <!-- 心形装饰 -->
-    <path d="M147 168 Q150 165 153 168 Q156 171 150 176 Q144 171 147 168Z" fill="#e84888"/>
-    <!-- 手臂左 -->
-    <path d="M108 175 Q88 188 80 205" stroke="#f0c8a0" stroke-width="14" fill="none" stroke-linecap="round"/>
-    <!-- 手臂右 -->
-    <path d="M192 175 Q210 185 218 195" stroke="#f0c8a0" stroke-width="14" fill="none" stroke-linecap="round"/>
-    <!-- 碗 -->
-    <ellipse cx="80" cy="210" rx="24" ry="10" fill="#4898d8"/>
-    <path d="M56 205 Q80 225 104 205" fill="#3878c8"/>
-    <ellipse cx="80" cy="204" rx="24" ry="8" fill="#5aa8e8"/>
-    <!-- 打蛋器 -->
-    <line x1="90" y1="196" x2="102" y2="175" stroke="#c0b090" stroke-width="3" stroke-linecap="round"/>
-    <ellipse cx="96" cy="190" rx="7" ry="9" fill="none" stroke="#c0b090" stroke-width="1.5"/>
-    <!-- 右手托东西 -->
-    <circle cx="218" cy="198" r="10" fill="#f0c8a0"/>
-    <!-- 头 -->
-    <circle cx="150" cy="125" r="34" fill="#f5ddb8"/>
-    <!-- 帽子 -->
-    <ellipse cx="150" cy="96" rx="36" ry="10" fill="#e02828"/>
-    <path d="M114 96 Q150 70 186 96" fill="#e02828"/>
-    <!-- 帽子装饰 -->
-    <rect x="130" y="90" width="40" height="8" rx="4" fill="#c01818"/>
-    <circle cx="138" cy="92" r="2" fill="#880000"/>
-    <circle cx="150" cy="91" r="2" fill="#880000"/>
-    <circle cx="162" cy="92" r="2" fill="#880000"/>
-    <!-- 头发 -->
-    <path d="M118 110 Q116 130 120 148" stroke="#d4a040" stroke-width="12" fill="none" stroke-linecap="round"/>
-    <path d="M182 110 Q184 130 180 148" stroke="#d4a040" stroke-width="12" fill="none" stroke-linecap="round"/>
-    <path d="M120 108 Q150 98 180 108" fill="#d4a040"/>
-    <!-- 刘海 -->
-    <path d="M118 108 Q134 118 150 116 Q166 118 182 108 Q166 102 150 104 Q134 102 118 108Z" fill="#c89030"/>
-    <!-- 眼睛 -->
-    <circle cx="138" cy="122" r="5" fill="#2a1408"/>
-    <circle cx="162" cy="122" r="5" fill="#2a1408"/>
-    <circle cx="140" cy="120" r="2" fill="white"/>
-    <circle cx="164" cy="120" r="2" fill="white"/>
-    <!-- 腮红 -->
-    <ellipse cx="128" cy="130" rx="8" ry="5" fill="#f09090" opacity=".5"/>
-    <ellipse cx="172" cy="130" rx="8" ry="5" fill="#f09090" opacity=".5"/>
-    <!-- 笑容 -->
-    <path d="M140 135 Q150 143 160 135" stroke="#c07848" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <!-- 秤 -->
-    <rect x="190" y="230" width="50" height="35" rx="5" fill="#6848b8" stroke="#5038a8" stroke-width="1"/>
-    <ellipse cx="215" cy="226" rx="26" ry="8" fill="#8868d8"/>
-    <ellipse cx="215" cy="222" rx="22" ry="7" fill="#c0b0f0"/>
-    <circle cx="215" cy="248" r="10" fill="#e8e0f8"/>
-    <line x1="215" y1="242" x2="215" y2="238" stroke="#8868d8" stroke-width="1.5"/>
-    <line x1="209" y1="244" x2="207" y2="241" stroke="#8868d8" stroke-width="1.5"/>
-    <!-- 擀面杖 -->
-    <rect x="50" y="272" width="90" height="10" rx="5" fill="#c4a050" transform="rotate(-15,95,277)"/>
-    <rect x="46" y="268" width="14" height="18" rx="4" fill="#a07830" transform="rotate(-15,53,277)"/>
-    <rect x="128" y="262" width="14" height="18" rx="4" fill="#a07830" transform="rotate(-15,135,271)"/>
-    <!-- 砧板 -->
-    <rect x="44" y="268" width="72" height="50" rx="6" fill="#a8d840" opacity=".9" transform="rotate(-8,80,293)"/>
-    <rect x="44" y="268" width="72" height="50" rx="6" fill="none" stroke="#88b820" stroke-width="1.5" transform="rotate(-8,80,293)"/>
-    <!-- 饼干模具 -->
-    <path d="M74 278 Q80 270 86 278 Q86 286 80 290 Q74 286 74 278Z" fill="none" stroke="#c4a030" stroke-width="1.5" transform="rotate(-8,80,280)"/>
-    <circle cx="66" cy="290" r="7" fill="none" stroke="#c4a030" stroke-width="1.5" transform="rotate(-8,66,290)"/>
-    <!-- 量杯 -->
-    <path d="M165 268 L172 298 L188 298 L194 268Z" fill="#f8e040" stroke="#d4c020" stroke-width="1"/>
-    <ellipse cx="180" cy="268" rx="15" ry="5" fill="#f8e898"/>
-    <!-- 面粉袋 -->
-    <rect x="208" y="260" width="36" height="48" rx="4" fill="#5888d8" stroke="#3868b8" stroke-width="1"/>
-    <ellipse cx="226" cy="260" rx="18" ry="6" fill="#78a0e8"/>
-    <rect x="216" y="274" width="20" height="3" rx="1" fill="white" opacity=".7"/>
-    <rect x="216" y="280" width="16" height="3" rx="1" fill="white" opacity=".5"/>
-    <!-- 小碗 -->
-    <path d="M155 292 Q165 304 175 292" fill="#88c870" stroke="#60a050" stroke-width="1"/>
-    <ellipse cx="165" cy="291" rx="10" ry="4" fill="#a0d888"/>
-    <!-- 装饰星星 -->
-    <text x="22" y="78" font-size="12" fill="#f0c840" opacity=".7">✦</text>
-    <text x="270" y="68" font-size="10" fill="#f090c0" opacity=".6">✦</text>
-    <text x="248" y="160" font-size="8" fill="#90c8f0" opacity=".6">✦</text>
-  </svg>
-</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:8px;border-radius:16px;overflow:hidden">
+        <div style="grid-row:1/3;border-radius:12px;overflow:hidden;aspect-ratio:1/1.05">
+          <img src="新年的水星婆婆双层草莓巴斯克/assets/17740981699140.8107741492748173.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.parentElement.style.background='#fdf0f4'">
+        </div>
+        <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1">
+          <img src="假期的完美抹茶戚风/assets/17740981751980.843058046602592.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.parentElement.style.background='#f0f5e8'">
+        </div>
+        <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1">
+          <img src="冬天尽情享受红糖肉桂卷/assets/17740981754930.1155856723571993.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.parentElement.style.background='#fdf6e3'">
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="tw"><div class="tabs" id="tabs"><div class="tab a-all" onclick="filterCat('全部')" data-cat="全部">全部<span class="tc">321</span></div>
@@ -780,18 +659,6 @@ CC['水星阅读']={p:'#eef0f8',b:'#b8c4e0',c:'#4a5878'};
 CC['随笔']={p:'#f4f0f8',b:'#c8b8e0',c:'#5a4878'};
 
 
-function toggleSearch(){
-  var p=document.getElementById('searchPopup');
-  p.classList.toggle('open');
-  if(p.classList.contains('open')) document.getElementById('searchInput').focus();
-}
-document.addEventListener('click',function(e){
-  var btn=document.getElementById('searchBtn');
-  var popup=document.getElementById('searchPopup');
-  if(popup && !popup.contains(e.target) && e.target!==btn){
-    popup.classList.remove('open');
-  }
-});
 function showHome(cat){
   if(cat)filterCat(cat);
   document.getElementById('homePage').classList.remove('hidden');
